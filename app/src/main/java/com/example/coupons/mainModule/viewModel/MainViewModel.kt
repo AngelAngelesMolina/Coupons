@@ -13,7 +13,7 @@ class MainViewModel : ViewModel() {
 
     private val repository = MainRepository()
 
-    private val coupon = MutableLiveData<CouponEntity>()
+    public val coupon = MutableLiveData<CouponEntity>()
 
     private val hideKeyboard = MutableLiveData<Boolean>()
     fun isHideKeyboard() = hideKeyboard
