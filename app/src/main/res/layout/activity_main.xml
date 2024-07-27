@@ -37,8 +37,8 @@
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_button_consult"
             android:onClick="@{()-> viewModel.consultCouponByCode()}"
+            android:text="@string/main_button_consult"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnCreate" />
@@ -48,9 +48,9 @@
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_button_create"
             android:onClick="@{()-> viewModel.saveCoupon()}"
-            android:visibility="gone"
+            android:text="@string/main_button_create"
+            app:isGone="@{isActive}"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toStartOf="@id/btnConsult"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,8 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:textTitle="@{isActive}" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_coupon"
@@ -81,9 +82,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCoupon"
                 android:layout_width="match_parent"
-                android:text="@={viewModel.coupon.code}"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/main_hint_coupon" />
+                android:contentDescription="@string/main_hint_coupon"
+                android:text="@={viewModel.coupon.code}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
