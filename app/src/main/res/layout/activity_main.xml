@@ -81,7 +81,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCoupon"
                 android:layout_width="match_parent"
-                android:text="@{viewModel.coupon.code}"
+                android:text="@={viewModel.coupon.code}"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/main_hint_coupon" />
 
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/main_hint_description"
-                android:text="@{viewModel.coupon.description}"
+                android:text="@={viewModel.coupon.description}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 tools:text="Cupón válido por 10% en compras mayores a 10 USD" />
 

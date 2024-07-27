@@ -13,7 +13,7 @@ class MainViewModel : ViewModel() {
 
     private val repository = MainRepository()
 
-    public val coupon = MutableLiveData<CouponEntity>()
+    val coupon = MutableLiveData(CouponEntity())
 
     private val hideKeyboard = MutableLiveData<Boolean>()
     fun isHideKeyboard() = hideKeyboard
@@ -25,7 +25,11 @@ class MainViewModel : ViewModel() {
         coupon.value?.code?.let { code ->
             viewModelScope.launch {
                 hideKeyboard.value = true
-                coupon.value = repository.consultCouponByCode(code)
+                //operador elvies, en caso de ser nulo haz ->
+                coupon.value = repository.consultCouponByCode(code) ?: CouponEntity(
+                    code = code,
+                    isActive = false
+                )
             }
         }
     }
@@ -35,6 +39,7 @@ class MainViewModel : ViewModel() {
             viewModelScope.launch {
                 hideKeyboard.value = true
                 try {
+                    couponEntity.isActive = true
                     repository.saveCoupon(couponEntity)
                     consultCouponByCode()
                     snackbarMsg.value = R.string.main_save_success

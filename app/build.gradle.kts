@@ -49,7 +49,7 @@ var lifeData_version = "2.8.3"
 var volley_version = "1.2.1"
 var glide_version = "4.15.1"
 var gson_version = "2.10.1"
-
+val activity_version = "1.9.1"
 
 dependencies {
 
@@ -58,6 +58,8 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.devtools.ksp:symbol-processing-api:1.8.21-1.0.11")
+    // Kotlin
+    implementation("androidx.activity:activity-ktx:$activity_version")
     //    ROOM
     implementation ("androidx.room:room-runtime:$room_version")
     //ksp ("androidx.room:room-compiler:$room_version")
