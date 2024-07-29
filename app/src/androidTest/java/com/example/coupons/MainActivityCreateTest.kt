@@ -36,9 +36,20 @@ class MainActivityCreateTest {
         val btnConsultar = onView(withId(R.id.btnConsult))
         btnConsultar.perform(click())
 
-         val btnCreate= onView(withId(R.id.btnCreate))
+        val btnCreate = onView(withId(R.id.btnCreate))
         btnCreate.check(matches(isDisplayed())) //verificar si el componente es visible.
 
+        val etDescription = onView(withId(R.id.etDescription))
+        //etDescription.perform(click())//No es necesario en test de expreso
+        etDescription.perform(replaceText("Cupon welcome 01"))
+        etCoupon.perform(replaceText("Hola01"))
+
+        btnCreate.perform(click())
+
+        //ACCEDER A SNACKBAR
+
+       val snackbar = onView(withId(com.google.android.material.R.id.snackbar_text))
+        snackbar.check(matches(withText("Cupón creado")))
 
 
     }
