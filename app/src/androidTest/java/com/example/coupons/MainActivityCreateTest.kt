@@ -12,6 +12,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.example.coupons.mainModule.view.MainActivity
+import org.hamcrest.Matchers.not
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -47,11 +48,23 @@ class MainActivityCreateTest {
         btnCreate.perform(click())
 
         //ACCEDER A SNACKBAR
-
-       val snackbar = onView(withId(com.google.android.material.R.id.snackbar_text))
+        val snackbar = onView(withId(com.google.android.material.R.id.snackbar_text))
         snackbar.check(matches(withText("Cupón creado")))
+    }
 
+    //CHECAR QUE EL BOTON "CREAR" NO EXISTE Y NO ES VISIBLE
+    @Test
+    fun consultCouponExist(){
+        val etCoupon = onView(withId(R.id.etCoupon))//acceder a la vista en tiempo real
+        etCoupon.check(matches(withText("")))//verifica que(view) coincida (con el texto(""))
+        etCoupon.perform(click())
+        etCoupon.perform(replaceText("Hola01"))
 
+        val btnConsultar = onView(withId(R.id.btnConsult))
+        btnConsultar.perform(click())
+
+        val btnCreate = onView(withId(R.id.btnCreate))
+        btnCreate.check(matches(not(isDisplayed()))) //negar que el componente es visible.
     }
 
 
